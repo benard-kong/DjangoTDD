@@ -122,9 +122,6 @@ class NewVisitorTest(LiveServerTestCase):
 
         # She notices the input box is nicely centered
         inputbox = self.browser.find_element_by_id('id_new_item')
-        print("inputbox.location['x']: " + str(inputbox.location['x']))
-        print("inputbox.size['width']: " + str(inputbox.size['width']))
-        print(self.browser.get_window_size())
         self.assertAlmostEqual(
             inputbox.location['x'] + (inputbox.size['width'] / 2),
             self.browser.get_window_size()['width'] / 2,
