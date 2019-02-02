@@ -1,2 +1,2 @@
-django==1.11
+django==1.11.16
 selenium==3.14.1
