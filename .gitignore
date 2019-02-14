@@ -4,3 +4,6 @@ geckodriver.log
 __pycache__
 .idea/
 /static
+*~
+*.swp
+*.swo
