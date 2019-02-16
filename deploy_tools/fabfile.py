@@ -3,11 +3,15 @@ from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run
 
 REPO_URL = 'https://github.com/bkong88/DjangoTDD.git'
+env.user = 'ubuntu'
+env.key_filename = '~/Downloads/django-tdd.pem'
+env.hosts = ['13.209.35.83']
+
 
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'
     run(f'mkdir -p {site_folder}')
-    with cd(side_folder):
+    with cd(site_folder):
         _get_latest_source()
         _update_virtualenv()
         _create_or_update_dotenv()
@@ -41,6 +45,6 @@ def _update_static_files():
     run('./virtualenv/bin/python manage.py collectstatic --noinput')
 
 def _update_database():
-    run('.virtualenv/bin/python manage.py migrate --noinput')
+    run('./virtualenv/bin/python manage.py migrate --noinput')
 
 
