@@ -18,7 +18,7 @@ class HomePageTest(TestCase):
         html = response.content.decode('utf8')
         # expected_html = render_to_string('home.html')
         # self.assertEqual(html, expected_html)
-        self.assertTrue(html.startswith('<html>'))
+        self.assertTrue(html.startswith('<!DOCTYPE html>'))
         self.assertIn('<title>To-Do lists</title>', html)
         self.assertTrue(html.strip().endswith('</html>'))
 
