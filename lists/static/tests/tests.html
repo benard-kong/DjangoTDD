@@ -8,12 +8,27 @@
 </head>
 <body>
   <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
-  <script src="qunit-2.6.0.js"></script>
+  <div id="qunit-fixture">
+    <form>
+      <input name="text">
+      <div class="has-error">Error text</div>
+    </form>
+  </div>
 
+  <script src="../jquery-3.3.1.js"></script>
+  <script src="../list.js"></script>
+  <script src="qunit-2.6.0.js"></script>
+  
   <script>
-    QUnit.test("smoke test", function (assert) {
-      assert.equal(1, 1, "Maths works!");
+    QUnit.test("errors should be hidden on keypress", function (assert) {
+      initialize();
+      $('input[name="text"]').trigger('keypress');
+      assert.equal($('.has-error').is(':visible'), false);
+    });
+    
+    QUnit.test("errors aren't hidden if there is no keypress", function (assert) {
+      initialize();
+      assert.equal($('.has-error').is(':visible'), true);
     });
   </script>
 </body>
