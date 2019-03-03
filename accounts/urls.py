@@ -13,9 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import include, url
-import accounts.views as accounts_views
+from django.conf.urls import url
+from accounts import views
 
 urlpatterns = [
-    url(r'send_login_email', accounts_views.send_login_email),
+    url(r'^send_login_email$', views.send_login_email, name='send_login_email'),
+    url(r'^login$', views.login, name='login'),
 ]
