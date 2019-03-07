@@ -1,7 +1,8 @@
 from django.db import models
 import uuid
-
-# Create your models here.
+from django.contrib import auth
+from django.db import models
+auth.signals.user_logged_in.disconnect(auth.models.update_last_login)
 
 class User(models.Model):
     email = models.EmailField(primary_key=True)
