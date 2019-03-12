@@ -1,5 +1,6 @@
-from fabric.api import run
+from fabric.api import run, env
 from fabric.context_managers import settings, shell_env
+env.key_filename = '~/Downloads/django-tdd.pem'
 
 def _get_manage_dot_py(host):
     return f'~/sites/{host}/virtualenv/bin/python ~/sites/{host}/manage.py'
