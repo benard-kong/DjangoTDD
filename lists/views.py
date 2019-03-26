@@ -18,29 +18,7 @@ def view_list(request, list_id):
             return redirect(list_)
     return render(request, 'list.html', {'list': list_, 'form': form})
 
-# # don't enter this code yet, we're only imagining it
-#
-# def new_list(request):
-#     form = NewListForm(data=request.POST)
-#     if form.is_valid():
-#         list_ = form.save(owner=request.user)  # creates both List and Item
-#         return redirect(list_)
-#     else:
-#         return render(request, 'home.html', {"form": form})
-
 def new_list(request):
-    form = ItemForm(data=request.POST)
-    if form.is_valid():
-        list_ = List()
-        if request.user.is_authenticated:
-            list_.owner = request.user
-        list_.save()
-        form.save(for_list=list_)
-        return redirect(list_)
-    else:
-        return render(request, 'home.html', {'form': form})
-
-def new_list2(request):
     form = NewListForm(data=request.POST)
     if form.is_valid():
         list_ = form.save(owner=request.user)
